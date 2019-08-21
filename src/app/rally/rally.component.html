@@ -1,0 +1,16 @@
+<h2>Rally</h2> 
+<ul class="heroes">
+        <li *ngFor="let hero of heroes">
+          <a routerLink="/detail/{{hero.id}}">
+            <span class="badge">{{hero.id}}</span> {{hero.name}}
+          </a>
+          <button class="delete" title="delete hero"
+            (click)="delete(hero)">x</button>
+            
+        </li>
+      </ul>
+      <button class="add" title="Add to Rally"
+      (click)="add(hero)">Add to rally</button>
+
+
+      <app-hero-search></app-hero-search>

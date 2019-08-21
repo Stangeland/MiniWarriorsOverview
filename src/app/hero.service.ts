@@ -6,6 +6,7 @@ import { Hero } from './hero';
 //import { HEROES } from './mock-heroes';
 import { MessageService } from './message.service';
 
+
 @Injectable({ providedIn: 'root' })
 export class HeroService {
   private heroesUrl = 'api/heroes';  // URL to web api
@@ -28,6 +29,9 @@ addHero (hero: Hero): Observable<Hero> {
     catchError(this.handleError<Hero>('addHero'))
   );
 }
+
+
+
 /** PUT: update the hero on the server */
 updateHero (hero: Hero): Observable<any> {
   return this.http.put(this.heroesUrl, hero, this.httpOptions).pipe(
@@ -54,6 +58,24 @@ httpOptions = {
       tap(_=>this.log(`fetched hero id=${id}`))
     );
   }
+  //Moves hero into rally
+setInRally(hero: Hero): Observable<Hero> {
+  this.log("test");
+ const id= hero.id;
+// InMemoryDataService.rallyManagement(hero, id, true)
+ this.log("completed");
+  return; 
+}
+
+//remove hero from rally
+unsetInRally(hero: Hero): Observable<Hero> {
+  
+  //const id= hero.id;
+ // InMemoryDataService.rallyManagement(hero, id, false)
+ this.log("test");
+   return;
+ }
+
 /* GET heroes whose name contains search term */
 searchHeroes(term: string): Observable<Hero[]> {
   if (!term.trim()) {

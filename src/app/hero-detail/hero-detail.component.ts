@@ -4,6 +4,7 @@ import { Location } from '@angular/common';
 
 import { Hero }         from '../hero';
 import { HeroService }  from '../hero.service';
+import { RallyService } from '../rally.service';
 
 @Component({
   selector: 'app-hero-detail',
@@ -16,6 +17,7 @@ export class HeroDetailComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private heroService: HeroService,
+    private rallyService: RallyService,
     private location: Location
   ) {}
 
@@ -27,6 +29,10 @@ export class HeroDetailComponent implements OnInit {
     const id = +this.route.snapshot.paramMap.get('id');
     this.heroService.getHero(id)
       .subscribe(hero => this.hero = hero);
+  }
+  setInRally(): void{
+    //const id = +this.route.snapshot.paramMap.get('id');
+    this.rallyService.addHero(this.hero).subscribe(()=>this.goBack());
   }
 
   goBack(): void {
