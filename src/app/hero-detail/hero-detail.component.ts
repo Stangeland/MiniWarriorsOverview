@@ -31,15 +31,13 @@ export class HeroDetailComponent implements OnInit {
       .subscribe(hero => this.hero = hero);
   }
   setInRally(): void{
-    //const id = +this.route.snapshot.paramMap.get('id');
     this.rallyService.addHero(this.hero).subscribe(()=>this.goBack());
+   // console.log("Hero added"); //debug
+
   }
 
   goBack(): void {
     this.location.back();
   }
-  save(): void{
-    this.heroService.updateHero(this.hero).subscribe(()=> this.goBack());
-  }
-  
+
 }

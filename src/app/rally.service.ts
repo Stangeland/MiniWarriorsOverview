@@ -1,28 +1,59 @@
 import { Injectable } from '@angular/core';
+
 import {Hero} from './hero';
 import {catchError, map, tap} from 'rxjs/operators';
-import { Observable, of } from 'rxjs';
+import { Observable, of, observable } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 //import {InMemoryDataService} from './in-memory-data.service';
 //import { HEROES } from './mock-heroes';
 import { MessageService } from './message.service';
+import {HeroService} from './hero.service';
 @Injectable({
   providedIn: 'root'
 })
 export class RallyService {
 
-    
+
 private heroesUrl = 'api/heroes';  // URL to web api
 constructor(
   private http: HttpClient,
   private messageService: MessageService) { }
 
-  addHero (hero: Hero): Observable<Hero> {
-    return this.http.post<Hero>(this.heroesUrl, hero, this.httpOptions).pipe(
-      tap((newHero: Hero) => this.log(`added hero w/ id=${newHero.id}`)),
-      catchError(this.handleError<Hero>('addHero'))
+
+ /* addHero (hero: Hero): Observable<Hero> {
+    return this.http.put(this.rallyUrl, hero, this.httpOptions).pipe( //manage id or return to heroesUrl
+      tap(_ => this.log(`updated hero id=${hero.id}`)),
+      catchError(this.handleError<any>('updateHero'))
     );
+  } */
+
+  //Adds a hero to rally
+  addHero (hero: Hero): Observable<Hero> {
+  hero.inRally=true;
+  return this.http.put(this.heroesUrl, hero, this.httpOptions).pipe( //superflous?
+    tap(_ => this.log(`Added hero id=${hero.id}`)),
+    catchError(this.handleError<any>('updateHero'))
+  );
   }
+  removeHero(hero: Hero): Observable<Hero>{
+   // hero.inRally=false;
+    console.log(hero);
+    return;
+  /*  return this.http.put(this.heroesUrl, hero, this.httpOptions).pipe(
+      tap(_ => this.log(`Removed Hero:=${hero.id}`)),
+      catchError(this.handleError<any>('updateHero'))
+    ); */
+  }
+
+  getRallyStatus(hero: Hero): boolean{
+    
+  return hero.inRally;
+  }
+
+ /* getId(hero: Hero): number{
+    return hero.id;
+  }*/
+
 
       getHeroes (): Observable<Hero[]> {
         return this.http.get<Hero[]>(this.heroesUrl)

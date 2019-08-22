@@ -11,20 +11,46 @@ import { HeroService }  from '../hero.service';
 })
 export class RallyComponent implements OnInit {
 heroes: Hero[];
+hero: Hero;
+isInRally=true;
     constructor(
-    
+  
       private rallyService: RallyService,
+      private route: ActivatedRoute,
   
     ) {}
   
     ngOnInit(): void {
-    //  this.getHeroes();
+ //Add rallystatus on load
+    this.getHeroes();
+   // this.getRallyHeroes();
+    
     }
   
     getHeroes(): void {
       this.rallyService.getHeroes()
       .subscribe(heroes => this.heroes = heroes);
     }
+   /* //TODO: Check if hero is in rally
+    getRally(): void{
+      if(this.rallyService.getRallyStatus)
+      this.getHero;
+    }
+*/
+
+
+/*
+getRallyHeroes(): void {
+  for(let i=1; i<=72; i++)
+  this.getRallyHero(i);
+} */
+
+    getHero(): void {
+      const id = +this.route.snapshot.paramMap.get('id');
+      this.rallyService.getHero(id)
+        .subscribe(hero => this.hero = hero);
+    }
+
     add(name: string): void {
       name = name.trim();
       if (!name) { return; }
@@ -34,10 +60,16 @@ heroes: Hero[];
         });
     }
  
-    save(): void{
+   /* save(): void{
      // this.heroService.setInRally(this.hero).subscribe(()=> this.goBack());
+    } */
+    delete(): void{  //Find a way to send the hero (Object this.hero is undefined)
+      this.rallyService.removeHero(this.hero);//.subscribe(()=> this.goBack());
+      console.log("Deleted");
     }
-    delete(): void{
-     // this.heroService.unsetInRally(this.hero);//.subscribe(()=> this.goBack());
-    }
+
+
+
+
   }
+

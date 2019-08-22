@@ -3,7 +3,7 @@ import {catchError, map, tap} from 'rxjs/operators';
 import { Observable, of } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Hero } from './hero';
-//import { HEROES } from './mock-heroes';
+
 import { MessageService } from './message.service';
 
 
@@ -67,14 +67,6 @@ setInRally(hero: Hero): Observable<Hero> {
   return; 
 }
 
-//remove hero from rally
-unsetInRally(hero: Hero): Observable<Hero> {
-  
-  //const id= hero.id;
- // InMemoryDataService.rallyManagement(hero, id, false)
- this.log("test");
-   return;
- }
 
 /* GET heroes whose name contains search term */
 searchHeroes(term: string): Observable<Hero[]> {

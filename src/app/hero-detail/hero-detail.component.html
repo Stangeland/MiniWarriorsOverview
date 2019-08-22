@@ -1,9 +1,13 @@
+
+<body>
 <div *ngIf="hero">
         <h2>{{hero.name | uppercase}} Details</h2>
         <div><span>Id: </span>{{hero.id}}</div>
-       <div><span> In rally? </span> {{hero.inRally}} </div>
+       <div><h3><span> Is in your rally?: </span> {{hero.inRally}} </h3> </div>
        <!-- <button (click)="setInRally()">Add to Rally</button> -->
         <button (click)="goBack()">Return</button>
         <button class="add" title="Add to Rally"
         (click)="setInRally(hero)">Add to rally</button>
       </div>
+
+    </body>
