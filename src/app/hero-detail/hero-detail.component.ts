@@ -4,6 +4,7 @@ import { Location } from '@angular/common';
 
 import { Hero }         from '../hero';
 import { HeroService }  from '../hero.service';
+import { RallyService } from '../rally.service';
 
 @Component({
   selector: 'app-hero-detail',
@@ -16,6 +17,7 @@ export class HeroDetailComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private heroService: HeroService,
+    private rallyService: RallyService,
     private location: Location
   ) {}
 
@@ -28,12 +30,14 @@ export class HeroDetailComponent implements OnInit {
     this.heroService.getHero(id)
       .subscribe(hero => this.hero = hero);
   }
+  setInRally(): void{
+    this.rallyService.addHero(this.hero).subscribe(()=>this.goBack());
+   // console.log("Hero added"); //debug
+
+  }
 
   goBack(): void {
     this.location.back();
   }
-  save(): void{
-    this.heroService.updateHero(this.hero).subscribe(()=> this.goBack());
-  }
-  
+
 }

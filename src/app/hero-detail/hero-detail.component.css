@@ -29,3 +29,11 @@ label {
     color: #ccc;
     cursor: auto;
   }
+  body {
+    color: blue
+
+  }
+  h3 {
+    color: red;
+   
+  }
