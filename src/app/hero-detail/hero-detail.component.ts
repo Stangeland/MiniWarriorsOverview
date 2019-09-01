@@ -32,7 +32,6 @@ export class HeroDetailComponent implements OnInit {
   }
   setInRally(): void{
     this.rallyService.addHero(this.hero).subscribe(()=>this.goBack());
-   // console.log("Hero added"); //debug
 
   }
 

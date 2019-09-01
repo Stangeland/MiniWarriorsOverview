@@ -10,6 +10,8 @@ export class InMemoryDataService implements InMemoryDbService {
   
 
   createDb() {
+    
+    var rallyCount=0;
      var heroes = [
       { id: 1, name: 'Alash' , inRally: false},
       { id: 2, name: 'Charles Martel' , inRally: false },
@@ -85,7 +87,6 @@ export class InMemoryDataService implements InMemoryDbService {
       { id: 72, name: 'King Richard' , inRally: false }
     ];
     
-    
-    return {heroes};
+    return {heroes, rallyCount};
   }
 }

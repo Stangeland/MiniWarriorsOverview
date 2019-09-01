@@ -42,19 +42,6 @@ constructor(
   );
   }
 
-  rallyHero (id: number): Observable<Hero> {
-
-   if(this.getRallyStatus) {
-    const url = `${this.heroesUrl}/${id}`;
-    return this.http.get<Hero>(url).pipe(
-      tap(_ => this.log(`fetched hero id for rally=${id}`)),
-      catchError(this.handleError<Hero>(`getHero id=${id}`))
-    );
-   }
-    }
-
-
-
   removeHero(hero: Hero): Observable<Hero>{
    hero.inRally=false;
    this.rallyCount--;   
