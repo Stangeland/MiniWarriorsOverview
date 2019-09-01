@@ -2,18 +2,13 @@
 
 <ul class="heroes">
   
-        <li *ngFor="let hero of heroes">
-           <!-- <p *ngIf="heroes.length > 22">There are many heroes!</p> Stop rally size at 22 -->
-         <!--  <div *ngIf="" -->
-            <span *ngIf="isInRally">   <a routerLink="/detail/{{hero.id}}">   <!-- Only print if it is in rally-->
+       <div *ngFor="let hero of heroes"> 
+            <li *ngIf="(hero.inRally)">    <a routerLink="/detail/{{hero.id}}">   <!-- Only print if it is in rally-->
             <span class ="badge">{{hero.id}}</span> {{hero.name}}
-          </a>
-          
+          </a>          
           <button class="delete" title="remove hero"
-            (click)="delete(hero)">x</button>
-            </span>
+            (click)="delete(hero)">x</button>            
         </li>
+      </div> 
       </ul>
-  
-
       <app-hero-search></app-hero-search>

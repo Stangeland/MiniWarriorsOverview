@@ -1,13 +1,10 @@
 import { Injectable } from '@angular/core';
-
 import {Hero} from './hero';
 import {catchError, map, tap} from 'rxjs/operators';
 import { Observable, of, observable } from 'rxjs';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
-//import {InMemoryDataService} from './in-memory-data.service';
-//import { HEROES } from './mock-heroes';
+import { HttpClient, HttpHeaders} from '@angular/common/http';
 import { MessageService } from './message.service';
-import {HeroService} from './hero.service';
+
 @Injectable({
   providedIn: 'root'
 })
@@ -15,45 +12,62 @@ export class RallyService {
 
 
 private heroesUrl = 'api/heroes';  // URL to web api
+private rallyCount=0;
+hero: Hero;
 constructor(
   private http: HttpClient,
   private messageService: MessageService) { }
 
-
- /* addHero (hero: Hero): Observable<Hero> {
-    return this.http.put(this.rallyUrl, hero, this.httpOptions).pipe( //manage id or return to heroesUrl
-      tap(_ => this.log(`updated hero id=${hero.id}`)),
-      catchError(this.handleError<any>('updateHero'))
-    );
-  } */
-
   //Adds a hero to rally
   addHero (hero: Hero): Observable<Hero> {
+    if(hero.inRally){
+      return this.http.put(this.heroesUrl, hero, this.httpOptions).pipe(
+        tap(_ => this.log(`${hero.name} is already in your rally`)),
+        catchError(this.handleError<any>('updateHero'))
+      );
+    }
+    else{
+      if(this.rallyCount>=22){
+        return this.http.put(this.heroesUrl, hero, this.httpOptions).pipe(
+          tap(_ => this.log(`No room in rally for=${hero.id}`)),
+          catchError(this.handleError<any>('updateHero'))
+        );
+      }
   hero.inRally=true;
-  return this.http.put(this.heroesUrl, hero, this.httpOptions).pipe( //superflous?
-    tap(_ => this.log(`Added hero id=${hero.id}`)),
+  this.rallyCount++;
+}
+  return this.http.put(this.heroesUrl, hero, this.httpOptions).pipe(
+    tap(_ => this.log(`${hero.name} has joined your rally `)),
     catchError(this.handleError<any>('updateHero'))
   );
   }
+
+  rallyHero (id: number): Observable<Hero> {
+
+   if(this.getRallyStatus) {
+    const url = `${this.heroesUrl}/${id}`;
+    return this.http.get<Hero>(url).pipe(
+      tap(_ => this.log(`fetched hero id for rally=${id}`)),
+      catchError(this.handleError<Hero>(`getHero id=${id}`))
+    );
+   }
+    }
+
+
+
   removeHero(hero: Hero): Observable<Hero>{
-   // hero.inRally=false;
-    console.log(hero);
-    return;
-  /*  return this.http.put(this.heroesUrl, hero, this.httpOptions).pipe(
-      tap(_ => this.log(`Removed Hero:=${hero.id}`)),
+   hero.inRally=false;
+   this.rallyCount--;   
+  return this.http.put(this.heroesUrl, hero, this.httpOptions).pipe(
+      tap(_ => this.log(`Removed Hero:=${hero.id}: ${hero.name} from rally`)),
       catchError(this.handleError<any>('updateHero'))
-    ); */
+    ); 
   }
 
   getRallyStatus(hero: Hero): boolean{
     
   return hero.inRally;
   }
-
- /* getId(hero: Hero): number{
-    return hero.id;
-  }*/
-
 
       getHeroes (): Observable<Hero[]> {
         return this.http.get<Hero[]>(this.heroesUrl)
@@ -62,16 +76,10 @@ constructor(
             catchError(this.handleError<Hero[]>('getHeroes', []))
           );
       }
-      getHero(id: number): Observable<Hero> {
-        const url = `${this.heroesUrl}/${id}`;
-        return this.http.get<Hero>(url).pipe(
-          tap(_=>this.log(`fetched hero id=${id}`))
-        );
-      }
-    
-  /** Log a HeroService message with the MessageService */
+
+  /** Log a RallyService message with the MessageService */
 private log(message: string) {
-  this.messageService.add(`HeroService: ${message}`);
+  this.messageService.add(`RallyService: ${message}`);
 }
 /**
  * Handle Http operation that failed.

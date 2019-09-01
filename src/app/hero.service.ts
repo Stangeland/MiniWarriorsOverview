@@ -58,14 +58,6 @@ httpOptions = {
       tap(_=>this.log(`fetched hero id=${id}`))
     );
   }
-  //Moves hero into rally
-setInRally(hero: Hero): Observable<Hero> {
-  this.log("test");
- const id= hero.id;
-// InMemoryDataService.rallyManagement(hero, id, true)
- this.log("completed");
-  return; 
-}
 
 
 /* GET heroes whose name contains search term */
