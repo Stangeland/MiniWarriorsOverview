@@ -30,8 +30,9 @@ label {
     cursor: auto;
   }
   body {
-    color: blue
-
+    margin-top: 20px;
+    font-family: Arial; 
+    color: blue;
   }
   h3 {
     color: red;
