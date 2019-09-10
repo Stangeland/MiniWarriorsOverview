@@ -34,6 +34,9 @@ export class HeroDetailComponent implements OnInit {
     this.rallyService.addHero(this.hero).subscribe(()=>this.goBack());
 
   }
+  deleteHero(){
+    this.rallyService.removeHero(this.hero).subscribe(()=>this.goBack());
+  }
 
   goBack(): void {
     this.location.back();

@@ -6,8 +6,11 @@
        <div *ngIf = "(hero.inRally)" ><h3><span> This hero is in your rally! </span></h3> </div>  
       <div> <img src= "..\assets\Images\{{hero.id}}.png"> </div>
         <button (click)="goBack()">Return</button>
-        <button class="add" title="Add to Rally"
-        (click)="setInRally(hero)">Add to rally</button>
+     <div *ngIf="(!hero.inRally)">   <button  class="add" title="Add to Rally"
+        (click)="setInRally(hero)">Add to rally</button> </div>
+        <div *ngIf="(hero.inRally)">
+          <button (click)= "deleteHero()">Remove</button>
+        </div>
       </div>
 
     </body>
