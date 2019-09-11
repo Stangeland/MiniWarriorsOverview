@@ -1,0 +1,37 @@
+<body>
+<div class="choose" style="width:100%">
+  <button style="width:25%" (click)="choose('Mage')">Mages</button>
+  <button style="width:25%" (click)="choose('Pikeman')">Pikemen</button>
+  <button style="width:25%" (click)="choose('Archer')">Archers</button>
+  <button style="width:25%" (click)="choose('Infantry')">Infantry</button>
+  <button style="width: 25%" (click)="choose('Mounted Archer')">Mounted Archers</button>
+  <button style="width: 25%" (click)="choose('Savage')">Savages</button>
+  <button style="width: 25%" (click)="choose('Paviser')">Pavisers</button>
+  <button style="width: 25%" (click)="choose('Musketeer')">Musketeers</button>
+  <button style="width: 25%" (click)="choose('Cavalry')">Cavalry</button>
+  <button style="width: 25%" (click)="choose('Monkey')">Monkey</button>
+
+
+<ul class="heroes">
+  
+        <div *ngFor="let hero of heroes"  > 
+             <li *ngIf="(hero.Role)==Role">    <a routerLink="/detail/{{hero.id}}">   <!-- Only print if it is in rally-->
+                <span class ="badge">{{hero.id}}</span> {{hero.name}}
+           </a>                  
+         </li>
+       </div> 
+       </ul>
+      </div>
+       <!--
+           <h3>Top Heroes</h3>
+<div class="grid grid-pad">
+  
+  <a *ngFor="let hero of heroes" class="col-1-4"
+  routerLink="/detail/{{hero.id}}">
+    <div class="module hero">
+      <h4>{{hero.name}}</h4>
+    </div>
+  </a>
+</div>
+       -->
+    </body>

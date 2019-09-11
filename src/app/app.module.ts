@@ -12,6 +12,7 @@ import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { InMemoryDataService }  from './in-memory-data.service';
 import { HeroSearchComponent } from './hero-search/hero-search.component';
 import { RallyComponent } from './rally/rally.component';
+import { RoleListComponent } from './role-list/role-list.component';
 
 @NgModule({
   declarations: [
@@ -22,6 +23,7 @@ import { RallyComponent } from './rally/rally.component';
     DashboardComponent,
     HeroSearchComponent,
     RallyComponent,
+    RoleListComponent,
   ],
   imports: [
     BrowserModule,

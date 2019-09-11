@@ -7,9 +7,8 @@ rally.
 
 
 TODO-LIST:
-Add support for removing heroes directly from rally.
-Only list heroes that belong in the rally on the rally page.
-Add classes(mage, tank etc.) to the heroes.
+Add classes(mage, tank etc.) to the heroes. //halfway there
+Add "add"-button to role-page
 
 
 

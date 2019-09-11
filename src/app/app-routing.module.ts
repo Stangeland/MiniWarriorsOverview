@@ -4,6 +4,7 @@ import { HeroesComponent } from './heroes/heroes.component';
 import { DashboardComponent }   from './dashboard/dashboard.component';
 import {HeroDetailComponent} from './hero-detail/hero-detail.component';
 import { RallyComponent } from './rally/rally.component';
+import {RoleListComponent} from './role-list/role-list.component';
 
 const routes: Routes = [
   { path: 'heroes', component: HeroesComponent },
@@ -14,7 +15,7 @@ const routes: Routes = [
    {path: ':id', component: RallyComponent}
     ] },
   {path: 'detail/:id', component: HeroDetailComponent},
- // {path: 'rally/:id', component: HeroDetailComponent}, //TODO
+  {path: 'role', component: RoleListComponent},
   { path: '', redirectTo: '/dashboard', pathMatch: 'full' }
 ];
 
