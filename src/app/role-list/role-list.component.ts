@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Hero } from '../hero';
 import { HeroService } from '../hero.service';
 import { ActivatedRoute } from '@angular/router';
+import {RallyService} from '../rally.service';
 @Component({
   selector: 'app-role-list',
   templateUrl: './role-list.component.html',
@@ -10,7 +11,7 @@ import { ActivatedRoute } from '@angular/router';
 export class RoleListComponent implements OnInit {
   heroes: Hero[] = [];
   Role ='';
-  constructor(private heroService: HeroService, private route: ActivatedRoute,) { }
+  constructor(private heroService: HeroService, private route: ActivatedRoute,private rallyService: RallyService) { }
 
   ngOnInit() {
     this.getHeroes();
@@ -23,6 +24,10 @@ export class RoleListComponent implements OnInit {
   }
   choose(role: string): void{    
     this.Role=role;
+  }
+  setInRally(hero: Hero): void{
+    this.rallyService.addHero(hero).subscribe(()=> hero=hero);
+
   }
 }
 

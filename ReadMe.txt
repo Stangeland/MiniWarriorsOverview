@@ -7,8 +7,8 @@ rally.
 
 
 TODO-LIST:
-Add classes(mage, tank etc.) to the heroes. //halfway there
-Add "add"-button to role-page
+Sprite up CSS
+Improve functionality of the dashboard
 
 
 

@@ -71,3 +71,10 @@ button.delete {
   background-color: gray !important;
   color: white;
 }
+button.add {
+  position: absolute;
+  left: 194px;
+  top: 5px;
+  background-color: gray !important;
+  color: white;
+}
