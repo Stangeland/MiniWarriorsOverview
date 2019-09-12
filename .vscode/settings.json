@@ -1,0 +1,4 @@
+{
+    "appService.defaultWebAppToDeploy": "/subscriptions/4c88ced7-dda0-46e8-bf53-2b3d842b2b95/resourceGroups/cloud-shell-storage-westeurope/providers/Microsoft.Web/sites/MiniWarriors",
+    "appService.deploySubpath": ""
+}
