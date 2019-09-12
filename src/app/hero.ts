@@ -1,7 +1,7 @@
 export class Hero{
 
     id: number;
-    name: String;
+    name: string;
   inRally: boolean;
-    role: String;
+    role: string;
 }
