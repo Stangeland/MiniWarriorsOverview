@@ -21,12 +21,26 @@ export class DashboardComponent implements OnInit {
 
   drop(event: CdkDragDrop<string[]>) {
     if (event.previousContainer === event.container) {
-      moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
+      if (event.previousIndex > event.currentIndex) {
+        console.log('test1');
+        moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
+        moveItemInArray(event.container.data, event.currentIndex + 1, event.previousIndex);
+      } else if (event.previousIndex === event.currentIndex) {
+        moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
+      } else {
+        moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
+        moveItemInArray(event.container.data, event.currentIndex - 1, event.previousIndex);
+      }
     } else {
       transferArrayItem(event.previousContainer.data,
         event.container.data,
         event.previousIndex,
         event.currentIndex);
+      transferArrayItem(event.container.data,
+        event.previousContainer.data,
+        event.currentIndex + 1,
+        event.previousIndex
+      );
     }
   }
 
@@ -55,8 +69,8 @@ export class DashboardComponent implements OnInit {
   getHeroes(): void {
     this.heroService.getHeroes().subscribe(
       heroes => {
-      this.heroes = heroes;
-      this.allocateHeroes();
+        this.heroes = heroes;
+        this.allocateHeroes();
       }
     );
   }
