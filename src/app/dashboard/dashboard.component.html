@@ -18,7 +18,7 @@
     [cdkDropListConnectedTo]="[midlineList, frontlineList, centerlineList]"
     class="example-list"
     (cdkDropListDropped)="drop($event)">
-    <div class="example-box" *ngFor="let item of backline" cdkDrag>{{item}}</div>
+    <div class="example-box" *ngFor="let item of backline" cdkDrag>{{item | uppercase}}</div>
   </div>
 </div>
 
@@ -32,7 +32,7 @@
     [cdkDropListConnectedTo]="[backlineList, centerlineList, frontlineList]"
     class="example-list"
     (cdkDropListDropped)="drop($event)">
-    <div class="example-box" *ngFor="let item of midline" cdkDrag>{{item}}</div>
+    <div class="example-box" *ngFor="let item of midline" cdkDrag>{{item | uppercase}}</div>
   </div>
 </div>
 
@@ -47,7 +47,7 @@
     [cdkDropListConnectedTo]="[backlineList, midlineList, frontlineList]"
     class="example-list"
     (cdkDropListDropped)="drop($event)">
-    <div class="example-box" *ngFor="let item of centerline" cdkDrag>{{item}}</div>
+    <div class="example-box" *ngFor="let item of centerline" cdkDrag>{{item | uppercase}}</div>
   </div>
 </div>
 
@@ -62,20 +62,11 @@
     class="example-list"
     (cdkDropListDropped)="drop($event)">
     <div class="example-box" *ngFor="let item of frontline" cdkDrag>
-        <div class="cdk-drag-placeholder" *cdkDragPlaceholder></div>
-        {{item}}
+        <!-- <div class="cdk-drag-placeholder" *cdkDragPlaceholder></div> -->
+        {{item | uppercase}}
       </div>
     
 
   </div>
 </div>
 </div>
-<ul class="heroes">
-  
-  <div *ngFor="let hero of heroes"> 
-       <li *ngIf="(hero.inRally)">    <a routerLink="/detail/{{hero.id}}">   <!-- Only print if it is in rally-->
-       <span class ="badge">{{hero.id}}</span> {{hero.name}}
-     </a>                    
-   </li>
- </div> 
- </ul>
