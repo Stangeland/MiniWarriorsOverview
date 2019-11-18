@@ -22,7 +22,6 @@ export class DashboardComponent implements OnInit {
   drop(event: CdkDragDrop<string[]>) {
     if (event.previousContainer === event.container) {
       if (event.previousIndex > event.currentIndex) {
-        console.log('test1');
         moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
         moveItemInArray(event.container.data, event.currentIndex + 1, event.previousIndex);
       } else if (event.previousIndex === event.currentIndex) {
@@ -49,8 +48,6 @@ export class DashboardComponent implements OnInit {
   }
 
   allocateHeroes(): void {
-    console.log('init');
-
     for (let i = 0; i < this.heroes.length; i++) {
       if (this.heroes[i].inRally) {
         this.rallyHeroes.push(this.heroes[i].name);
