@@ -1,7 +1,7 @@
-export class Hero{
+export class Hero {
 
-    id: number;
-    name: string;
+  id: number;
+  name: string;
   inRally: boolean;
-    role: string;
+  role: string;
 }

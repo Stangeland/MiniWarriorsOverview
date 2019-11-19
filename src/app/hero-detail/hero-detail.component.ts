@@ -2,14 +2,14 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
 
-import { Hero }         from '../hero';
-import { HeroService }  from '../hero.service';
+import { Hero } from '../hero';
+import { HeroService } from '../hero.service';
 import { RallyService } from '../rally.service';
 
 @Component({
   selector: 'app-hero-detail',
   templateUrl: './hero-detail.component.html',
-  styleUrls: [ './hero-detail.component.css' ]
+  styleUrls: ['./hero-detail.component.css']
 })
 export class HeroDetailComponent implements OnInit {
   hero: Hero;
@@ -19,7 +19,7 @@ export class HeroDetailComponent implements OnInit {
     private heroService: HeroService,
     private rallyService: RallyService,
     private location: Location
-  ) {}
+  ) { }
 
   ngOnInit(): void {
     this.getHero();
@@ -30,12 +30,12 @@ export class HeroDetailComponent implements OnInit {
     this.heroService.getHero(id)
       .subscribe(hero => this.hero = hero);
   }
-  setInRally(hero: Hero ): void{
-    this.rallyService.addHero(this.hero).subscribe(()=>this.goBack());
+  setInRally(hero: Hero): void {
+    this.rallyService.addHero(this.hero).subscribe(() => this.goBack());
 
   }
-  deleteHero(){
-    this.rallyService.removeHero(this.hero).subscribe(()=>this.goBack());
+  deleteHero() {
+    this.rallyService.removeHero(this.hero).subscribe(() => this.goBack());
   }
 
   goBack(): void {

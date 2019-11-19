@@ -8,65 +8,43 @@
   </a>
 </div> -->
 <div class="wrapper">
-<div class="example-container">
-  <h2>Backline</h2>
-
-  <div
-    cdkDropList
-    #backlineList="cdkDropList"
-    [cdkDropListData]="backline"
-    [cdkDropListConnectedTo]="[midlineList, frontlineList, centerlineList]"
-    class="example-list"
-    (cdkDropListDropped)="drop($event)">
-    <div class="example-box" *ngFor="let item of backline" cdkDrag>{{item | uppercase}}</div>
+  <div class="example-container">
+    <h2>Backline</h2>
+    <div cdkDropList #backlineList="cdkDropList" [cdkDropListData]="backline"
+      [cdkDropListConnectedTo]="[midlineList, frontlineList, centerlineList]" class="example-list"
+      (cdkDropListDropped)="drop($event)">
+      <div class="example-box" *ngFor="let item of backline" cdkDrag>{{item | uppercase}}</div>
+    </div>
   </div>
-</div>
 
-<div class="example-container">
-  <h2>Midline</h2>
-
-  <div
-    cdkDropList
-    #midlineList="cdkDropList"
-    [cdkDropListData]="midline"
-    [cdkDropListConnectedTo]="[backlineList, centerlineList, frontlineList]"
-    class="example-list"
-    (cdkDropListDropped)="drop($event)">
-    <div class="example-box" *ngFor="let item of midline" cdkDrag>{{item | uppercase}}</div>
+  <div class="example-container">
+    <h2>Midline</h2>
+    <div cdkDropList #midlineList="cdkDropList" [cdkDropListData]="midline"
+      [cdkDropListConnectedTo]="[backlineList, centerlineList, frontlineList]" class="example-list"
+      (cdkDropListDropped)="drop($event)">
+      <div class="example-box" *ngFor="let item of midline" cdkDrag>{{item | uppercase}}</div>
+    </div>
   </div>
-</div>
 
-
-<div class="example-container">
-  <h2>Centerline</h2>
-
-  <div
-    cdkDropList
-    #centerlineList="cdkDropList"
-    [cdkDropListData]="centerline"
-    [cdkDropListConnectedTo]="[backlineList, midlineList, frontlineList]"
-    class="example-list"
-    (cdkDropListDropped)="drop($event)">
-    <div class="example-box" *ngFor="let item of centerline" cdkDrag>{{item | uppercase}}</div>
+  <div class="example-container">
+    <h2>Centerline</h2>
+    <div cdkDropList #centerlineList="cdkDropList" [cdkDropListData]="centerline"
+      [cdkDropListConnectedTo]="[backlineList, midlineList, frontlineList]" class="example-list"
+      (cdkDropListDropped)="drop($event)">
+      <div class="example-box" *ngFor="let item of centerline" cdkDrag>{{item | uppercase}}</div>
+    </div>
   </div>
-</div>
 
-<div class="example-container">
-  <h2>Frontline</h2>
-
-  <div
-    cdkDropList
-    #frontlineList="cdkDropList"
-    [cdkDropListData]="frontline"
-    [cdkDropListConnectedTo]="[backlineList, centerlineList, midlineList]"
-    class="example-list"
-    (cdkDropListDropped)="drop($event)">
-    <div class="example-box" *ngFor="let item of frontline" cdkDrag>
-        <!-- <div class="cdk-drag-placeholder" *cdkDragPlaceholder></div> -->
+  <div class="example-container">
+    <h2>Frontline</h2>
+    <div cdkDropList #frontlineList="cdkDropList" [cdkDropListData]="frontline"
+      [cdkDropListConnectedTo]="[backlineList, centerlineList, midlineList]" class="example-list"
+      (cdkDropListDropped)="drop($event)">
+      <div class="example-box" *ngFor="let item of frontline" cdkDrag>
         {{item | uppercase}}
       </div>
-    
 
+
+    </div>
   </div>
-</div>
 </div>

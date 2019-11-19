@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 import { Hero } from '../hero';
 import { HeroService } from '../hero.service';
-import {RallyService} from '../rally.service';
+import { RallyService } from '../rally.service';
 @Component({
   selector: 'app-heroes',
   templateUrl: './heroes.component.html',
@@ -18,11 +18,11 @@ export class HeroesComponent implements OnInit {
 
   getHeroes(): void {
     this.heroService.getHeroes()
-    .subscribe(heroes => this.heroes = heroes);
-  }
-  setInRally(hero: Hero): void{
-    this.rallyService.addHero(hero).subscribe(()=> hero=hero);
-
+      .subscribe(heroes => this.heroes = heroes);
   }
 
+  setInRally(hero: Hero): void {
+    this.rallyService.addHero(hero).subscribe();
+
+  }
 }

@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Hero } from '../hero';
 import { HeroService } from '../hero.service';
 import { ActivatedRoute } from '@angular/router';
-import {RallyService} from '../rally.service';
+import { RallyService } from '../rally.service';
 @Component({
   selector: 'app-role-list',
   templateUrl: './role-list.component.html',
@@ -10,8 +10,8 @@ import {RallyService} from '../rally.service';
 })
 export class RoleListComponent implements OnInit {
   heroes: Hero[] = [];
-  Role ='';
-  constructor(private heroService: HeroService, private route: ActivatedRoute,private rallyService: RallyService) { }
+  role = '';
+  constructor(private heroService: HeroService, private route: ActivatedRoute, private rallyService: RallyService) { }
 
   ngOnInit() {
     this.getHeroes();
@@ -22,11 +22,11 @@ export class RoleListComponent implements OnInit {
     this.heroService.getHeroes()
       .subscribe(heroes => this.heroes = heroes);
   }
-  choose(role: string): void{    
-    this.Role=role;
+  choose(role: string): void {
+    this.role = role;
   }
-  setInRally(hero: Hero): void{
-    this.rallyService.addHero(hero).subscribe(()=> hero=hero);
+  setInRally(hero: Hero): void {
+    this.rallyService.addHero(hero).subscribe(() => hero = hero);
 
   }
 }

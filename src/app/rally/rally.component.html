@@ -1,14 +1,11 @@
-<h2>Rally</h2> 
-
+<h2>Rally</h2>
 <ul class="heroes">
-  
-       <div *ngFor="let hero of heroes"> 
-            <li *ngIf="(hero.inRally)">    <a routerLink="/detail/{{hero.id}}">   <!-- Only print if it is in rally-->
-            <span class ="badge">{{hero.id}}</span> {{hero.name}}
-          </a>          
-          <button class="delete" title="remove hero"
-            (click)="delete(hero)">x</button>            
-        </li>
-      </div> 
-      </ul>
-      <app-hero-search></app-hero-search>
+  <div *ngFor="let hero of heroes">
+    <li *ngIf="(hero.inRally)"> <a routerLink="/detail/{{hero.id}}">
+        <span class="badge">{{hero.id}}</span> {{hero.name}}
+      </a>
+      <button class="delete" title="remove hero" (click)="delete(hero)">x</button>
+    </li>
+  </div>
+</ul>
+<app-hero-search></app-hero-search>
