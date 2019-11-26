@@ -18,7 +18,8 @@ const routes: Routes = [
   },
   { path: 'detail/:id', component: HeroDetailComponent },
   { path: 'role', component: RoleListComponent },
-  { path: '', redirectTo: '/dashboard', pathMatch: 'full' }
+  { path: '', redirectTo: '/dashboard', pathMatch: 'full' },
+  {path:  '**', redirectTo: '/dashboard' }
 ];
 
 @NgModule({

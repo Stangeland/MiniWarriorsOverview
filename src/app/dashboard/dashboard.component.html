@@ -13,7 +13,8 @@
     <div cdkDropList #backlineList="cdkDropList" [cdkDropListData]="backline"
       [cdkDropListConnectedTo]="[midlineList, frontlineList, centerlineList]" class="example-list"
       (cdkDropListDropped)="drop($event)">
-      <div class="example-box" *ngFor="let item of backline" cdkDrag>{{item | uppercase}}</div>
+      <div class="example-box" *ngFor="let item of backline" cdkDrag>
+        {{item | uppercase}}</div>
     </div>
   </div>
 
@@ -48,3 +49,7 @@
     </div>
   </div>
 </div>
+
+<button mat-raised-button (click)="saveRally()">Save Rally</button>
+<button mat-raised-button (click)="clearRally()">Clear Rally from local storage</button>
+<button mat-raised-button (click)="refresh()">Reload rally</button>

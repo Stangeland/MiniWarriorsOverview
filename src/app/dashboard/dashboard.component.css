@@ -120,6 +120,7 @@
     opacity: 0.8;
     /* color: red; */
     background-color: green;
+    
   }
   
   .cdk-drag-animating {
@@ -133,3 +134,5 @@
   .example-list.cdk-drop-list-dragging .example-box:not(.cdk-drag-placeholder) {
     transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
   }
+
+  

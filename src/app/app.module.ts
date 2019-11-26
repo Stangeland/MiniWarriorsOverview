@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import {FormsModule} from '@angular/forms';
+import {MatButtonModule} from '@angular/material';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HeroesComponent } from './heroes/heroes.component';
@@ -14,6 +15,7 @@ import { HeroSearchComponent } from './hero-search/hero-search.component';
 import { RallyComponent } from './rally/rally.component';
 import { RoleListComponent } from './role-list/role-list.component';
 import { DragDropModule } from '@angular/cdk/drag-drop';
+import { MerlinTrialComponent } from './merlin-trial/merlin-trial.component';
 
 @NgModule({
   declarations: [
@@ -25,11 +27,13 @@ import { DragDropModule } from '@angular/cdk/drag-drop';
     HeroSearchComponent,
     RallyComponent,
     RoleListComponent,
+    MerlinTrialComponent,
   ],
   imports: [
     BrowserModule,
     DragDropModule,
     FormsModule,
+    MatButtonModule,
     HttpClientModule,
     HttpClientInMemoryWebApiModule.forRoot(
       InMemoryDataService,
