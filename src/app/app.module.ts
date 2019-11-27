@@ -16,6 +16,8 @@ import { RallyComponent } from './rally/rally.component';
 import { RoleListComponent } from './role-list/role-list.component';
 import { DragDropModule } from '@angular/cdk/drag-drop';
 import { MerlinTrialComponent } from './merlin-trial/merlin-trial.component';
+import { Rally2Component } from './dashboard/rally2/rally2.component';
+import { Rally3Component } from './dashboard/rally/rally3.component';
 
 @NgModule({
   declarations: [
@@ -28,6 +30,8 @@ import { MerlinTrialComponent } from './merlin-trial/merlin-trial.component';
     RallyComponent,
     RoleListComponent,
     MerlinTrialComponent,
+    Rally2Component,
+    Rally3Component
   ],
   imports: [
     BrowserModule,

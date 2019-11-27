@@ -1,18 +1,15 @@
 import { Component, OnInit } from '@angular/core';
-import { Hero } from '../hero';
-// import { HeroService } from '../hero.service';
+import { RallyService } from 'src/app/rally.service';
+import { MessageService } from 'src/app/message.service';
+import { Hero } from 'src/app/hero';
 import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
-import { MessageService } from '../message.service';
-import { RallyService } from '../rally.service';
-import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-dashboard',
-  templateUrl: './dashboard.component.html',
-  styleUrls: ['./dashboard.component.css']
+  selector: 'app-rally',
+  templateUrl: './rally.component.html',
+  styleUrls: ['./rally.component.css']
 })
-export class DashboardComponent implements OnInit {
-
+export class Rally3Component implements OnInit {
   constructor(
     private heroService: RallyService,
     private messageService: MessageService
@@ -22,6 +19,7 @@ export class DashboardComponent implements OnInit {
   midline = ['loading'];
   centerline = ['loading'];
   backline = ['loading'];
+  benchwarmers = ['loading'];
   rally: string;
   heroes: Hero[] = [];
   rallyHeroes: string[] = [];
@@ -77,7 +75,7 @@ export class DashboardComponent implements OnInit {
     this.heroService.getHeroes().subscribe(
       heroes => {
         this.heroes = heroes;
-        this.rally = localStorage.getItem('rally');
+        this.rally = localStorage.getItem('rally3');
         if (this.rally && this.rally.split(',') !== Array(32).fill('X')) {
           this.rallyHeroes = this.rally.split(',');
         }
@@ -91,7 +89,7 @@ export class DashboardComponent implements OnInit {
       this.centerline.toString() + ',' + this.frontline.toString();
     console.log(this.rally);
     if ((this.rally.match(/X/g) || []).length === 10) {
-      localStorage.setItem('rally', this.rally);
+      localStorage.setItem('rally3', this.rally);
       alert('Rally saved');
     } else {
       alert('Rally is not full, please fill up with heroes');
@@ -99,7 +97,7 @@ export class DashboardComponent implements OnInit {
 
   }
   clearRally() {
-    localStorage.removeItem('rally');
+    localStorage.removeItem('rally3');
     alert('Rally is cleared');
   }
   refresh() {

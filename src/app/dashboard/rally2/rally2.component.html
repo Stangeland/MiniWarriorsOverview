@@ -1,0 +1,50 @@
+<div class="wrapper">
+    <div class="example-container">
+      <h2>Backline</h2>
+      <div cdkDropList #backlineList="cdkDropList" [cdkDropListData]="backline"
+        [cdkDropListConnectedTo]="[midlineList, frontlineList, centerlineList]" class="example-list"
+        (cdkDropListDropped)="drop($event)">
+        <div class="example-box" *ngFor="let item of backline" cdkDrag>
+          {{item | uppercase}}</div>
+      </div>
+    </div>
+  
+    <div class="example-container">
+      <h2>Midline</h2>
+      <div cdkDropList #midlineList="cdkDropList" [cdkDropListData]="midline"
+        [cdkDropListConnectedTo]="[backlineList, centerlineList, frontlineList]" class="example-list"
+        (cdkDropListDropped)="drop($event)">
+        <div class="example-box" *ngFor="let item of midline" cdkDrag>{{item | uppercase}}</div>
+      </div>
+    </div>
+  
+    <div class="example-container">
+      <h2>Centerline</h2>
+      <div cdkDropList #centerlineList="cdkDropList" [cdkDropListData]="centerline"
+        [cdkDropListConnectedTo]="[backlineList, midlineList, frontlineList]" class="example-list"
+        (cdkDropListDropped)="drop($event)">
+        <div class="example-box" *ngFor="let item of centerline" cdkDrag>{{item | uppercase}}</div>
+      </div>
+    </div>
+  
+    <div class="example-container">
+      <h2>Frontline</h2>
+      <div cdkDropList #frontlineList="cdkDropList" [cdkDropListData]="frontline"
+        [cdkDropListConnectedTo]="[backlineList, centerlineList, midlineList]" class="example-list"
+        (cdkDropListDropped)="drop($event)">
+        <div class="example-box" *ngFor="let item of frontline" cdkDrag>
+          {{item | uppercase}}
+        </div>
+  
+  
+      </div>
+    </div>
+  </div>
+  
+  <button mat-raised-button (click)="saveRally()">Save Rally</button>
+  <button mat-raised-button (click)="clearRally()">Clear Rally from local storage</button>
+  <button mat-raised-button (click)="refresh()">Reload Rally</button>
+  <div><a routerLink="/dashboard"><button mat-raised-button> Rally 1</button></a>
+    <a routerLink="/dashboard2"><button mat-raised-button> Rally 2</button></a>
+    <a routerLink="/dashboard3"><button mat-raised-button> Rally 3</button></a>
+  </div>
